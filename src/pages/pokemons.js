@@ -41,7 +41,7 @@ const Pokemons = () => {
       <PokemonToast
         key={index}
         name={toUpperCaseFirst(pokemon.name)}
-        url={getPokemonId(pokemon.url)}
+        id={getPokemonId(pokemon.url)}
       />
     ));
   }
