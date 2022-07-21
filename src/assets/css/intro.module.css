@@ -1,15 +1,15 @@
 .intro {
-  border: 1px solid red;
+  border: 1px solid #dc3545;
 }
 .intro button {
-  background-color: red;
-  border-color: red;
+  background-color: #dc3545;
+  border-color: #dc3545;
   color: white;
 }
 .intro button:hover {
   background-color: white;
-  border-color: red;
-  color: red;
+  border-color: #dc3545;
+  color: #dc3545;
 }
 .pokefont {
   font-family: 'Pokemon Solid', sans-serif;
