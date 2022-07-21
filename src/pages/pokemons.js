@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Spinner } from 'react-bootstrap';
 import useFetchData from '../hooks/useFetchData';
 import toUpperCaseFirst from '../helpers/toUpperCaseFirst';
+import getPokemonId from '../helpers/getPokemonId';
 import PokemonToast from '../components/UI/pokemonToast';
 import styles from '../assets/css/pokemons.module.css';
 
@@ -37,7 +38,10 @@ const Pokemons = () => {
     return <h3>Oops. Something Happend.</h3>;
   } else {
     return pokemons.map((pokemon) => (
-      <PokemonToast name={toUpperCaseFirst(pokemon.name)} url={pokemon.url} />
+      <PokemonToast
+        name={toUpperCaseFirst(pokemon.name)}
+        url={getPokemonId(pokemon.url)}
+      />
     ));
   }
 };
