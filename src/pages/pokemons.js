@@ -37,8 +37,9 @@ const Pokemons = () => {
   } else if (hasError) {
     return <h3>Oops. Something Happend.</h3>;
   } else {
-    return pokemons.map((pokemon) => (
+    return pokemons.map((pokemon, index) => (
       <PokemonToast
+        key={index}
         name={toUpperCaseFirst(pokemon.name)}
         url={getPokemonId(pokemon.url)}
       />
