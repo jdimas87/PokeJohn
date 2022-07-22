@@ -7,8 +7,8 @@ const Header = () => {
     <Container fluid className={`${styles.header} py-5 text-center`}>
       <Row>
         <Col>
-          <Link to='/'>
-            <h1>PokeJohn</h1>
+          <Link to='/' className={styles.header__a}>
+            <h1 className={styles.header__h1}>PokeJohn</h1>
           </Link>
         </Col>
       </Row>
