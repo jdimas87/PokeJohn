@@ -1,10 +1,9 @@
 import { useState, useEffect } from 'react';
-import { Spinner } from 'react-bootstrap';
 import useFetchData from '../hooks/useFetchData';
 import toUpperCaseFirst from '../helpers/toUpperCaseFirst';
 import getPokemonId from '../helpers/getPokemonId';
 import PokemonToast from '../components/UI/pokemonToast';
-import styles from '../assets/css/pokemons.module.css';
+import Loader from '../components/UI/loader';
 
 const Pokemons = () => {
   const [pokemons, setPokemons] = useState([]);
@@ -25,15 +24,7 @@ const Pokemons = () => {
   }, [data, error]);
 
   if (isLoading) {
-    return (
-      <div className={styles.spinner_wrapper}>
-        <Spinner
-          animation='grow'
-          variant='danger'
-          style={{ width: '10rem', height: '10rem' }}
-        />
-      </div>
-    );
+    return <Loader />;
   } else if (hasError) {
     return <h3>Oops. Something Happend.</h3>;
   } else {
