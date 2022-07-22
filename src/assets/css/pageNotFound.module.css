@@ -1,0 +1,9 @@
+.pageNotFound__h1 {
+  color: #dc3545;
+  font-family: 'Pokemon Solid', sans-serif;
+  font-size: 5rem;
+}
+
+.pageNotFound__img {
+  width: 150px;
+}
