@@ -1,14 +1,16 @@
 import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+
 import useFetchData from '../hooks/useFetchData';
-import toUpperCaseFirst from '../helpers/toUpperCaseFirst';
-import getPokemonId from '../helpers/getPokemonId';
-import PokemonToast from '../components/UI/pokemonToast';
+
+import PokemonsLayout from '../components/layouts/pokemonsLayout';
 import Loader from '../components/UI/loader';
 
 const Pokemons = () => {
   const [pokemons, setPokemons] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
+  const params = useParams();
 
   const { data, error } = useFetchData('https://pokeapi.co/api/v2/pokemon');
 
@@ -25,17 +27,13 @@ const Pokemons = () => {
 
   if (isLoading) {
     return <Loader />;
-  } else if (hasError) {
-    return <h3>Oops. Something Happend.</h3>;
-  } else {
-    return pokemons.map((pokemon, index) => (
-      <PokemonToast
-        key={index}
-        name={toUpperCaseFirst(pokemon.name)}
-        id={getPokemonId(pokemon.url)}
-      />
-    ));
   }
+
+  if (hasError) {
+    return <h3>Oops. Something Happend.</h3>;
+  }
+
+  return <PokemonsLayout pokemons={pokemons} params={params} />;
 };
 
 export default Pokemons;
