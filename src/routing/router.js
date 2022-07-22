@@ -4,6 +4,7 @@ import Layout from '../components/layouts/layout';
 import Intro from '../pages/intro';
 import Pokemons from '../pages/pokemons';
 import Pokemon from '../pages/pokemon';
+import PageNotFound from '../pages/pageNotFound';
 
 const Router = () => {
   return (
@@ -14,6 +15,7 @@ const Router = () => {
           <Route path='/pokemons' element={<Pokemons />}>
             <Route path=':pokemonId' element={<Pokemon />} />
           </Route>
+          <Route path='*' element={<PageNotFound />} />
         </Route>
       </Routes>
     </BrowserRouter>
