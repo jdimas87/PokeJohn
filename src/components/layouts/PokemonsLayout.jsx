@@ -5,7 +5,7 @@ import toUpperCaseFirst from '../../helpers/toUpperCaseFirst';
 import isObjectEmpty from '../../helpers/isObjectEmpty';
 import getPokemonId from '../../helpers/getPokemonId';
 
-import PokemonToast from '../UI/pokemonToast';
+import PokemonToast from '../UI/PokemonToast';
 
 const PokemonsLayout = ({ pokemons, params }) => {
   const pokemonsList = pokemons.map((pokemon, index) => (

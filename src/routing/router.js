@@ -1,10 +1,10 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
-import Layout from '../components/layouts/layout';
-import Intro from '../pages/intro';
-import Pokemons from '../pages/pokemons';
-import Pokemon from '../pages/pokemon';
-import PageNotFound from '../pages/pageNotFound';
+import Layout from '../components/layouts/Layout';
+import Intro from '../pages/Intro';
+import Pokemons from '../pages/Pokemons';
+import Pokemon from '../pages/Pokemon';
+import PageNotFound from '../pages/PageNotFound';
 
 const Router = () => {
   return (

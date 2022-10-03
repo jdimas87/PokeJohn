@@ -3,8 +3,8 @@ import { useParams } from 'react-router-dom';
 
 import useFetchData from '../hooks/useFetchData';
 
-import PokemonsLayout from '../components/layouts/pokemonsLayout';
-import Loader from '../components/UI/loader';
+import PokemonsLayout from '../components/layouts/PokemonsLayout';
+import Loader from '../components/UI/Loader';
 
 const Pokemons = () => {
   const [pokemons, setPokemons] = useState([]);
