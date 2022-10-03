@@ -1,10 +1,17 @@
+import { Suspense } from 'react';
+import { ErrorBoundary } from 'react-error-boundary';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import loadable from '@loadable/component';
 
-import Layout from '../components/layouts/Layout';
-import Intro from '../pages/Intro';
-import Pokemons from '../pages/Pokemons';
-import Pokemon from '../pages/Pokemon';
-import PageNotFound from '../pages/PageNotFound';
+const Fallback = loadable(() =>
+  import('../components/UI/ErrorBoudaryFallback')
+);
+const Intro = loadable(() => import('../pages/Intro'));
+const Layout = loadable(() => import('../components/layouts/Layout'));
+const Loader = loadable(() => import('../components/UI/Loader'));
+const PageNotFound = loadable(() => import('../pages/PageNotFound'));
+const Pokemon = loadable(() => import('../pages/Pokemon'));
+const Pokemons = loadable(() => import('../pages/Pokemons'));
 
 const Router = () => {
   return (
@@ -12,8 +19,25 @@ const Router = () => {
       <Routes>
         <Route element={<Layout />}>
           <Route exact path='/' element={<Intro />} />
-          <Route path='/pokemons' element={<Pokemons />}>
-            <Route path=':pokemonId' element={<Pokemon />} />
+          <Route
+            path='/pokemons'
+            element={
+              <ErrorBoundary FallbackComponent={Fallback}>
+                <Suspense fallback={<Loader />}>
+                  <Pokemons />
+                </Suspense>
+              </ErrorBoundary>
+            }>
+            <Route
+              path=':pokemonId'
+              element={
+                <ErrorBoundary FallbackComponent={Fallback}>
+                  <Suspense fallback={<Loader />}>
+                    <Pokemon />
+                  </Suspense>
+                </ErrorBoundary>
+              }
+            />
           </Route>
           <Route path='*' element={<PageNotFound />} />
         </Route>
